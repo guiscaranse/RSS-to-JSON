@@ -1,16 +1,20 @@
 {
   "name": "node_rss_server",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "A simple server to convert RSS feed into JSON",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ayush Sharma",
-  "license": "ISC",
+  "contributors": [
+    "Guilherme Scaranse de Castro <guilherme.scaranse@ifba.edu.br>"
+  ],
+  "license": "MIT",
   "dependencies": {
-    "express": "4.15.2",
-    "rss-to-json": "1.0.2"
+    "express": "^4.15.2",
+    "feed-to-json-promise": "^1.4.0"
   }
 }
