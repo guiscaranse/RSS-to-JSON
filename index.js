@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-const Feed = require('feed-to-json-promise')
 
 const GoogleNewsRss = require('google-news-rss');
 

@@ -1,21 +1,17 @@
 {
-  "name": "node_rss_server",
-  "version": "1.5.0",
-  "description": "A simple server to convert RSS feed into JSON",
+  "name": "node_gnews_server",
+  "version": "1.0.0",
+  "description": "A simple server to convert RSS Google News feeds into JSON",
   "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ayush Sharma",
-  "contributors": [
-    "Guilherme Scaranse de Castro <guilherme.scaranse@ifba.edu.br>"
-  ],
+  "author": "Guilherme Scaranse",
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.2",
-    "feed-to-json-promise": "^1.4.0",
     "google-news-rss": "^0.4.1"
   }
 }
