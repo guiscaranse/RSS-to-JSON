@@ -2,6 +2,10 @@ var express = require('express');
 var app = express();
 const Feed = require('feed-to-json-promise')
 
+const GoogleNewsRss = require('google-news-rss');
+
+const googleNews = new GoogleNewsRss();
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -9,18 +13,22 @@ app.use(function (req, res, next) {
 });
 
 app.set('port', process.env.PORT || 5000);
-
-app.get('/', function (req, res, next) {
-    const feed = new Feed();
-    if (req.query.feedURL) {
-        feed.load(req.query.feedURL, {timeout: 500}).then(feed => {
-            res.send(feed);
-        }).catch(error => {
-            res.send({"error": 'true', "items": []});
-        })
+app.get('/search/:query', function (req, res, next) {
+    var query = req.params.query;
+    var data = {"articles": []}
+    if(req.query.lang){
+        googleNews
+            .search(query,num = 10, language = req.query.lang)
+            .then(resp => {
+                data.articles = resp;
+                res.send(data);
+            }).catch(error => {
+            res.send({"error": 'true', "articles": []});
+        });
     } else {
-        res.status(400).send({'error': 'feedURL is required'});
+        res.status(400).send({'error': 'language is required'});
     }
+
 });
 
 app.get('/hi', function (req, res, next) {
