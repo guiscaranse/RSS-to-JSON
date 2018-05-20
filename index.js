@@ -17,7 +17,7 @@ app.get('/search/:query', function (req, res, next) {
     var data = {"articles": []}
     if(req.query.lang){
         googleNews
-            .search(query,num = 10, language = req.query.lang)
+            .search(query,num = 30, language = req.query.lang)
             .then(resp => {
                 data.articles = resp;
                 res.send(data);
